@@ -6,11 +6,17 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
+		else if(text.contains("-")){
+			String[] numbers = splitNumbers(text); 
+			getNegatives(numbers);
+		}
 		else if(text.contains(",") || text.contains("//")){
 			return sum(splitNumbers(text));
 		}
 		else
 			return 1;
+
+	return 0;
 	}
 
 	private static int toInt(String number){
@@ -34,6 +40,17 @@ public class Calculator {
 		}
 		return total;
     }
+
+    private static void getNegatives(String[] numbers){
+	    String negatives = "";
+	    for (String number : numbers){
+	    	if(number.contains("-"))
+	    		negatives += "," + number;
+	    }
+
+	    throw new RuntimeException("Negatives not allowed: " + negatives.substring(1));
+		
+	}
 
 
 

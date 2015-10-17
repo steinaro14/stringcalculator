@@ -38,4 +38,11 @@ public class CalculatorTest {
     public void testDifferentDelimiters(){
     	assertEquals(3, Calculator.add("//;\n1;2"));
     }
+
+    @Test(expected=RuntimeException.class)
+    public void testNegatives(){
+    	assertEquals("Negatives not allowed: -1", Calculator.add("-1,2"));
+    	assertEquals("Negatives not allowed: -4,-5", Calculator.add("2,-4,3,-5"));
+
+    }
 }
